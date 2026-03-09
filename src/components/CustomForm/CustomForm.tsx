@@ -3,7 +3,11 @@ import type { FormValues } from "../../models";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { formSchema } from "../../models";
 import { InputForm } from "../CustomInput/CustomInput";
+import { useGlobalContex } from "../../context";
 export const CustomForm = () => {
+  /*  const { gentlemanContextValue } = useContext(GentlemanContext); */
+  const { value, setValue } = useGlobalContex();
+  setValue(10);
   const {
     control,
     handleSubmit,
@@ -24,6 +28,7 @@ export const CustomForm = () => {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className=" border border-red-500">{value}</div>
       <InputForm
         type="text"
         name="name"

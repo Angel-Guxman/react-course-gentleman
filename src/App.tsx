@@ -1,10 +1,11 @@
 import { CustomForm } from "./components";
+import { GlobalProvider } from "./context";
 function App() {
   return (
-    <>
-      <div className="  text-red-500">hola</div>
+    <GlobalProvider>
+      <div className="text-red-500">hola</div>
       <CustomForm />
-    </>
+    </GlobalProvider>
   );
 }
 
