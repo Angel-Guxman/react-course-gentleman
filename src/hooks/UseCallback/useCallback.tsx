@@ -18,12 +18,8 @@ export const ListOfUsers = () => {
       age: 20,
     },
   ]);
-  const totalAge = useCallback(
-    () => items.reduce((result, user) => result + user.age, 0),
-    [items],
-  );
-  const [suma, setSuma] = useState(0);
-  const doubleTotalAge = totalAge() + suma;
+  const [user, setUser] = useState("");
+  const selectUser = useCallback((user: string) => setUser(user), []);
   const addUser = () => {
     setItems((value) => [
       ...value,
@@ -41,18 +37,15 @@ export const ListOfUsers = () => {
         <div className="" key={user.id}>
           <span>{user.name}</span>
           <span>{user.age}</span>
+          <button type="button" onClick={() => selectUser(user.name)}>
+            Seleccionar
+          </button>
         </div>
       ))}
-      <span>Edad total: {totalAge()}</span>
-      <span>Suma total: {doubleTotalAge}</span>
+      <span>User: {user}</span>
       <button type="button" onClick={addUser}>
         Agregar
       </button>
-      <input
-        type="text"
-        value={suma}
-        onChange={(e) => setSuma(parseFloat(e.target.value))}
-      />
     </div>
   );
 };

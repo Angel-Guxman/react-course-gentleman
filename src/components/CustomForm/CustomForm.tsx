@@ -6,8 +6,7 @@ import { InputForm } from "../CustomInput/CustomInput";
 import { useGlobalContex } from "../../context";
 export const CustomForm = () => {
   /*  const { gentlemanContextValue } = useContext(GentlemanContext); */
-  const { value, setValue } = useGlobalContex();
-  setValue(10);
+  const { value } = useGlobalContex();
   const {
     control,
     handleSubmit,
